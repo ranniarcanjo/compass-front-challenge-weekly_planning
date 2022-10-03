@@ -1,12 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compass - Weekly Planning</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.scss">
+    <title>Acompanhamento Semanal</title>
+    <style>
+
+    </style>
 </head>
-<body>
+
+<body style="background-color: #DDD;">
+
+
+    <div class="container__main">
+        <header class="header__container">
+            <div class="header__descriptions">
+                <h1>Planejamento Semanal</h1>
+                <p>Utilize o formulário para adicionar novas tarefas</p>
+            </div>
+            <div class="header__actions">
+                <button class="btn btn-success action__save" data-save-local-storage id="save-local-storage">Salvar localStorage</button>
+                <button class="btn btn-danger action__delete" data-delete-local-storage id="delete-local-storage">Excluir localStorage</button>
+            </div>
+
+            <div class="header__date-time">
+                <h2>10:59</h2>
+                <p>27 de Setembro de 2022</p>
+            </div>
+        </header>
+
+        <!-- Aqui tera barra de rolagem vertical -->
+        <main class="main">
+            <section class="calendar__container">
+                <div class="form__calendar">
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <input type="text" class="form-control" placeholder="City" aria-label="City">
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" class="form-control" placeholder="State" aria-label="State">
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" class="form-control" placeholder="Zip" aria-label="Zip">
+                        </div>
+
+                        <div class="col-sm">
+                            <button class="btn btn-success" data-add-task>Adicionar Atividade</button>
+                        </div>
+
+                        <div class="col-sm">
+                            <button class="btn btn-danger" data-delete-all-task>Excluir Todos</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tabs__calendar">
+                    <div class="calendar__horario">
+                        <h1 class="calendar__horario-title">
+                            Horário
+                        </h1>
+                    </div>
+
+                    <nav class="bg-gradient-success bg-tabs">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link nav-segunda active" id="nav-home-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                aria-selected="true" onclick="plan('segunda')">Segunda-Feira</button>
+
+                            <button class="nav-link nav-terca" id="nav-profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                                aria-selected="false" onclick="removeLocalStorage()">Terça-Feira</button>
+
+                            <button class="nav-link nav-quarta" id="nav-contact-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                                aria-selected="false">Quarta-Feira</button>
+
+                                <button class="nav-link nav-quinta" id="nav-contact-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                                aria-selected="false">Quinta-Feira</button>
+
+                                <button class="nav-link nav-sexta" id="nav-contact-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                                aria-selected="false">Sexta-Feira</button>
+
+                                <button class="nav-link nav-sabado" id="nav-contact-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                                aria-selected="false">Sábado</button>
+
+                                <button class="nav-link nav-domingo" id="nav-contact-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                                aria-selected="false">Domingo</button>
+
+
+                        </div>
+
+                        <div class="tab-content-scroll" data-tab-scroll id="scroll-top">
+                            <div id="scroll1"></div>
+                        </div>
+
+                        <!-- <div class="tab-content-scroll display-none" data-tab-scroll id="scroll-top2">
+                            <div id="scroll1"></div>
+                        </div> -->
+                    </nav>
+
+                    <!-- Aqui tera uma barra de rolagem horizontal -->
+                    <div class="tabs__calendar-tasks">
+                       
+                       
+
+                        <div class="tab-content" id="nav-tabContent">
+     
+                            
+                            <!-- <div id="scroll-tab"> -->
+                                <div data-tab-content class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                    aria-labelledby="nav-home-tab" tabindex="0">
+                                   
+                                    <div class="card-items">
+                                        <div class="line-task-equal"></div> 
+                                        <div class="card__horario-item color-day">
+                                            10h30m
+                                        </div>
+                                        <div id="scroll-tab">
+                                        <div class="card-task__container">
+                                            <div class="task-item">
+                                                <p class="task__text">Segunda</p>
+                                                <button class="btn btn-sm btn-danger btn-delete-item-task">Apagar</button>
+                                            </div>  
+                                            
+                                            <div class="task-item">
+                                                <p class="task__text">Segunda</p>
+                                                <button class="btn btn-sm btn-danger btn-delete-item-task">Apagar</button>
+                                            </div>  
     
+                                            <div class="task-item">
+                                                <p class="task__text">Segunda</p>
+                                                <button class="btn btn-sm btn-danger btn-delete-item-task">Apagar</button>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div data-tab-content class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                    aria-labelledby="nav-profile-tab" tabindex="0">
+                                    
+                                    <div class="card-items">
+                                        <!-- <div class="line-task-equal"></div>  -->
+                                        <div class="card__horario-item color-day">
+                                            10h30m
+                                        </div>
+                                        <div id="scroll-tab">
+                                        <div class="card-task__container">
+                                            <div class="task-item">
+                                                <p class="task__text">Terça</p>
+                                                <button class="btn btn-sm btn-danger btn-delete-item-task">Apagar</button>
+                                            </div>  
+                                            
+                                            <div class="task-item">
+                                                <p class="task__text">Terça</p>
+                                                <button class="btn btn-sm btn-danger btn-delete-item-task">Apagar</button>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div data-tab-content class="tab-pane fade" id="nav-contact" role="tabpanel"
+                                    aria-labelledby="nav-contact-tab" tabindex="0">
+
+                                    <div id="scroll-tab3">
+                                            <h1>Quarta</h1>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-disabled" role="tabpanel"
+                                    aria-labelledby="nav-disabled-tab" tabindex="0">
+                                    <h1></h1>
+                                </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+
+        function plan(dia) {
+            var taskPlaning = [
+                {
+                    atividade: "descricao",
+                    dia: "segunda",
+                    hora: "10:52"
+                },
+                {
+                    atividade: "descricao",
+                    dia: "segunda",
+                    hora: "10:52"
+                },
+                {
+                    atividade: "descricao",
+                    dia: "segunda",
+                    hora: "10:52"
+                },
+                {
+                    atividade: "descricao",
+                    dia: "segunda",
+                    hora: "10:52"
+                },
+                {
+                    atividade: "descricao",
+                    dia: "segunda",
+                    hora: "10:52"
+                },
+                {
+                    atividade: "descricao",
+                    dia: "segunda",
+                    hora: "10:52"
+                },
+                {
+                    atividade: "descricao",
+                    dia: "segunda",
+                    hora: "10:52"
+                },
+                {
+                    atividade: "descricao",
+                    dia: "segunda",
+                    hora: "10:52"
+                }
+
+                
+            ];
+
+        }
+
+        function removeLocalStorage() {
+            localStorage.removeItem("task");
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+
+    <script src="./assets/js/tab.js"></script>
+    <script src="./assets/js/app.js"></script>
 </body>
+
 </html>
