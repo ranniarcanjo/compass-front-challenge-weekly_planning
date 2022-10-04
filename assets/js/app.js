@@ -11,6 +11,8 @@ const getTaskList = () => JSON.parse(localStorage.getItem('taskList')) ?? [];
 //Salva task em localStorage
 const setTaskList = (taskList) => localStorage.setItem('taskList', JSON.stringify(taskList));
 
+const listItemTerca = document.querySelector("#itemTerca");
+
 //Criar objeto task e adiciona no array
 const createTask = (text, day, hour, indice) => {
     taskList.push(
@@ -21,7 +23,30 @@ const createTask = (text, day, hour, indice) => {
             'taskText': text,
         }
     )
+    
     console.log("Task ", taskList)
+}
+
+//Criar item na lista
+const createItemList = (list) => {
+    const itemTerca = document.querySelector("#itemTerca");
+    listItemTerca.innerHTML = '';
+    
+    taskList.forEach(el => {
+
+
+        listItemTerca.innerHTML += `
+        <div class="card__horario-item bg-terca">
+            ${el.taskHour}
+        </div>
+        <div class="card-task__container">
+            <div class="task-item bd-terca">
+                <p class="task__text">${el.taskText}</p>
+                <button class="btn btn-sm btn-danger btn-delete-item-task" data-del-id="${el.taskId}">Apagar</button>
+            </div>  
+        </div>
+        `
+    })
 }
 
 // Adicionando em local storage
@@ -48,12 +73,15 @@ btnDeleteAllTask.addEventListener('click', (e) => {
 })
 
 //Refresh
-// const refresh = () => {
-//     const taskListS = getTaskList()
-//         (console.log("INDICE", taskListS))  
-//         // taskListStorage.forEach((item, indice) => {
-//     // });   
-// }
+const refreshList = () => {
+    // console.log(taskList)
+    if (taskList.length === 0){
+        // console.log('lista vazia')
+    }else{
+        createItemList(taskList)
+    }
+      
+}
 
 //Recuperando dados formulario
 document.querySelector('#task-form').addEventListener('submit', (e) =>{
@@ -69,6 +97,7 @@ document.querySelector('#task-form').addEventListener('submit', (e) =>{
         alert("Campos de preenchimento obrigatorio");
     }else{
         createTask(taskText, taskDay, taskHour, uuid())
+        refreshList()
         clearForm()
     }
 })
@@ -98,5 +127,9 @@ const timeNow = () => {
     const minute = minutes < 10 ? `0${minutes}` : minutes
     clock.innerHTML = `${hour}:${minute}`
 }
+
+// const formatHour = (hour)
   
 setInterval(() => {timeNow()}, 1000)
+
+refreshList()

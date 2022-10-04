@@ -48,9 +48,9 @@ tabs.forEach(tab => {
       scrollTab.scrollLeft = scrollTop.scrollLeft;
   };
 
-  scrollTop2.onscroll = function () {
-    scrollTab2.scrollLeft = scrollTop2.scrollLeft;
-  };
+  // scrollTop2.onscroll = function () {
+  //   scrollTab2.scrollLeft = scrollTop2.scrollLeft;
+  // };
 
   // scrollTop3.onscroll = function () {
   //   scrollTab3.scrollLeft = scrollTop3.scrollLeft;
