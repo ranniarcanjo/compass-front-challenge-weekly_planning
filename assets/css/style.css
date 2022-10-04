@@ -25,25 +25,25 @@ body{
 }
 
 /* Color Day */
-.dorber-segunda{border-color: var(--bg-color-segunda);}
+.bd-segunda{border-left: 10px solid var(--bg-color-segunda);}
 .bg-segunda{background-color: var(--bg-color-segunda);}
 
-.dorber-terca{border-color: var(--bg-color-terca);}
+.bd-terca{border-left: 10px solid var(--bg-color-terca);}
 .bg-terca{background-color: #35E185;}
 
-.dorber-quarta{border-color: var(--bg-color-quarta);}
+.bd-quarta{border-left: 10px solid var(--bg-color-quarta);}
 .bg-quarta{background-color: var(--bg-color-quarta);}
 
-.dorber-quinta{border-color: var(--bg-color-quinta);}
+.bd-quinta{border-left: 10px solid var(--bg-color-quinta);}
 .bg-quinta{background-color: var(--bg-color-quinta);}
 
-.dorber-sexta{border-color: var(--bg-color-sexta);}
+.bd-sexta{border-left: 10px solid var(--bg-color-sexta);}
 .bg-sexta{background-color: var(--bg-color-sexta);}
 
-.dorber-sabado{border-color: var(--bg-color-sabado);}
+.bd-sabado{border-left: 10px solid var(--bg-color-sabado);}
 .bg-sabado{background-color: var(--bg-color-sabado);}
 
-.dorber-domingo{border-color: var(--bg-color-domingo);}
+.bd-domingo{border-left: 10px solid var(--bg-color-domingo);}
 .bg-domingo{background-color: var(--bg-color-domingo);}
 
 
@@ -265,7 +265,6 @@ input{
 
     border-radius: 10px;
     box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
-    border-left: 10px solid #FFA246;
     border-top: 1px solid #fff;
     border-right: 1px solid #fff;
     border-bottom: 1px solid #fff;
