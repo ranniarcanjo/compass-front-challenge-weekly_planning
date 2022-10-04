@@ -3,7 +3,7 @@ const tabContents = document.querySelectorAll('[data-tab-content]');
 const tabsScroll = document.querySelector('#scroll-top');
 const listTabsScroll = document.querySelectorAll('[data-tab-scroll]');
 
-console.log("TABS SCROLL", listTabsScroll)
+// console.log("TABS SCROLL", listTabsScroll)
 
 tabs.forEach(tab => {
     tab.addEventListener('click', (e) => {
@@ -11,27 +11,15 @@ tabs.forEach(tab => {
         // const targetScroll = document.querySelector(tabsScroll.dataset.scrollTarget)
 
         const tabAtual = tab.classList[1];
-        console.log('TAB', tab.classList[1]);
 
-        
-        
         listTabsScroll.forEach(tabScroll => {
           tabScroll.classList.add('display-none');
-          // if(tabAtual === 'nav-segunda'){
-          //   tabScroll.classList.remove('display-none');
-          // }
-  
+     
           if(tabAtual === 'nav-terca'){
             tabScroll.classList.remove('display-none');
            
           }
         })
-
-        
-
-        // targetScroll.classList.remove('display-none');
-        // tabScroll.classList.remove('display-none');
-
 
         tabContents.forEach(tabContent => {
           tabContent.classList.add('display-none');
